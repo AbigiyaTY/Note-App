@@ -1,4 +1,3 @@
-# rubocop:disable all
 require 'securerandom'
 
 class Note
@@ -14,7 +13,7 @@ class Note
     "Date: #{@date.strftime('%Y-%m-%d %H:%M:%S')} \nNote: #{@text}"
   end
 
-  def set_text(text)
+  def text=(text)
     @text = text
     @date = Time.now
   end

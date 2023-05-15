@@ -1,11 +1,10 @@
-# rubocop:disable all
 require './manager'
 require './note'
 
 module App
   def self.run
     menu = Menu.new
-    begin
+    loop do
       puts ' Simple Note App '.center(50, '#')
       puts 'a) Add'
       puts 'b) Edit'
@@ -13,7 +12,7 @@ module App
       puts 'd) Show All'
       puts 'q) Quit'
       print 'Select: '
-      choice = gets.chomp
+      choice = gets.chomp.downcase
 
       case choice
       when 'a' then menu.add
@@ -21,7 +20,9 @@ module App
       when 'c' then menu.delete
       when 'd' then menu.show_all
       end
-    end while choice != 'q'
+
+      break if choice == 'q'
+    end
   end
 
   class Menu
@@ -42,32 +43,32 @@ module App
 
     def edit
       @manager.show_all
-      entries = @manager.get_all
-      if entries.length > 0
+      entries = @manager.all
+      if entries.length.positive?
         print 'Enter the Index Number to Edit: '
         index = gets.chomp.to_i
         note = entries.fetch(index - 1)
         print 'Note: '
         text = gets.chomp
-        note.set_text(text)
+        note.text = (text)
         @manager.store(note)
         puts 'Entry Update'.center(200, '*')
       end
-    rescue Exception => e
+    rescue StandardError
       puts 'Invalid Input'
     end
 
     def delete
       @manager.show_all
-      entries = @manager.get_all
-      if entries.length > 0
+      entries = @manager.all
+      if entries.length.positive?
         print 'Enter the Index Number to Delete : '
         index = gets.chomp.to_i
         note = entries.fetch(index - 1)
         @manager.delete(note)
         puts 'Entry Deleted'.center(200, '*')
       end
-    rescue Exception => e
+    rescue StandardError
       puts 'Invalid Input'
     end
   end

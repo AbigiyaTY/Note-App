@@ -1,4 +1,3 @@
-# rubocop:disable all
 require './database'
 
 class Manager
@@ -11,7 +10,7 @@ class Manager
   end
 
   def show_all
-    entries = @database.get_all
+    entries = @database.all
     puts 'No Entries Found'.center(50, '-') if entries.empty?
     entries.each_with_index do |item, index|
       puts (index + 1).to_s.center(200, '-')
@@ -20,8 +19,8 @@ class Manager
     end
   end
 
-  def get_all
-    @database.get_all
+  def all
+    @database.all
   end
 
   def delete(note)

@@ -1,4 +1,3 @@
-# rubocop:disable all
 require 'pstore'
 
 class Database
@@ -12,7 +11,7 @@ class Database
     end
   end
 
-  def get_all
+  def all
     notes = []
     @store.transaction do
       @store.roots.each do |id|
