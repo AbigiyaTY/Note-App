@@ -1,4 +1,4 @@
-## Copyright 2023, [Abigiya Tadesse]
+## Copyright 2023, Abigiya Tadesse
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this Note App and associated documentation files, to deal in the Note App without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Note App, and to permit persons to whom the Note App is furnished to do so, subject to the following conditions:
 
